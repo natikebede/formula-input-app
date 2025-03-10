@@ -1,0 +1,256 @@
+/* Main container styles */
+.App {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+/* Container for the formula input */
+.formula-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  min-height: 48px;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.formula-container:focus-within {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Input wrapper to handle dropdown positioning */
+.input-wrapper {
+  position: relative;
+  flex-grow: 1;
+  min-width: 120px;
+}
+
+/* Token styles */
+.formula-token {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Function token */
+.formula-token.function {
+  background: #f3f4f6;
+  color: #4b5563;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.formula-token.function:hover {
+  background: #e5e7eb;
+}
+
+/* Operator token */
+.formula-token.operator {
+  color: #6366f1;
+  font-weight: 600;
+  padding: 0 4px;
+  cursor: default;
+}
+
+/* Number token */
+.formula-token.number {
+  color: #059669;
+  font-weight: 500;
+  padding: 0 4px;
+  cursor: default;
+}
+
+/* The input field */
+input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 6px 8px;
+  font-size: 14px;
+  background: transparent;
+  color: #374151;
+}
+
+/* Function icon */
+.function-icon {
+  color: #6366f1;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Token dropdown menu */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  min-width: 120px;
+  z-index: 1001;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.dropdown-arrow {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-left: 1px solid #e5e7eb;
+  border-top: 1px solid #e5e7eb;
+  z-index: 1;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  position: relative;
+  z-index: 2;
+  background: white;
+  border-radius: 6px;
+}
+
+.dropdown-menu li {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #4b5563;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.dropdown-menu li:hover {
+  background: #f3f4f6;
+  color: #6366f1;
+}
+
+/* Autocomplete dropdown */
+.autocomplete {
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 4px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.autocomplete li {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #4b5563;
+  font-size: 14px;
+  transition: all 0.15s ease;
+}
+
+.autocomplete li.loading {
+  color: #6b7280;
+  cursor: default;
+  justify-content: center;
+  padding: 16px;
+  font-size: 14px;
+}
+
+.autocomplete li:not(.loading):hover {
+  background: #f3f4f6;
+}
+
+.autocomplete li .function-icon {
+  color: #6366f1;
+  font-size: 16px;
+  padding: 4px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  min-width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.autocomplete li .function-content {
+  flex: 1;
+}
+
+.autocomplete li .function-name {
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.autocomplete li .function-description {
+  color: #6b7280;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.highlighted {
+  background-color: #ede9fe;
+  color: #6366f1;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* Calculate button */
+button {
+  margin-top: 16px;
+  padding: 8px 16px;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: #4f46e5;
+}
+  
